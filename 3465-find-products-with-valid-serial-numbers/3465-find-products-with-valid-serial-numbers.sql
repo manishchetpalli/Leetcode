@@ -1,0 +1,11 @@
+-- SELECT * 
+-- FROM products
+-- WHERE description REGEXP 'SN[0-9]{4}-[0-9]{4}';
+
+
+-- WHERE description LIKE '%SN____-____%' OR description  LIKE '%SN____-_____%';
+
+select *
+from products
+where REGEXP_LIKE(description, '(^|[^A-Za-z0-9])SN[0-9]{4}-[0-9]{4}([^A-Za-z0-9]|$)', 'c')
+order by product_id
